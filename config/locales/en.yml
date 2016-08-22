@@ -99,6 +99,11 @@ en:
         short_description: Short description
         sku: SKU
         weight: Weight
+        author: Author
+        isbn: ISBN
+        language: Language
+        pages: Pages
+        subject: Subject
       shoppe/product_attribute:
         key: Key
       shoppe/product_category:
@@ -508,6 +513,11 @@ en:
       on_sale?: On sale?
       on_sale_info:  If checked, this product will be displayed within the public store
       permalink: Permalink
+      author: Author
+      isbn: ISBN
+      language: Language
+      pages: Pages
+      subject: Subject
       price: Price
       price_variants: Price/Variants
       pricing: Pricing

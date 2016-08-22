@@ -15,6 +15,20 @@
       %dl.third
         %dt= f.label :sku, t('shoppe.products.sku')
         %dd= f.text_field :sku, :class => 'text', :required => true
+    .splitContainer
+      %dl.third
+        %dt= f.label :author, t('shoppe.products.author')
+        %dd= f.text_field :author, :class => 'text focus', :required => true
+      %dl.third
+        %dt= f.label :isbn, t('shoppe.products.isbn')
+        %dd= f.text_field :isbn, :class => 'text'
+      %dl.third
+        %dt= f.label :language, t('shoppe.products.language')
+        %dd= f.text_field :language, :class => 'text', :required => true
+      %dl.third
+        %dt= f.label :subject, t('shoppe.products.subject')
+        %dd= f.text_field :subject, :class => 'text', :required => true
+        
     %dl
       %dt= f.label :description, t('shoppe.products.description')
       %dd= f.text_area :description, :class => 'text', :required => true
