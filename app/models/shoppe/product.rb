@@ -173,7 +173,6 @@ module Shoppe
           product.short_description = row["short_description"]
           product.weight = row["weight"]
           product.price = row["price"].nil? ? 0 : row["price"]
-          product.permalink  = row["permalink"]
 
           product.product_categories << begin
             # Shoppe::ProductCategory.find_or_initialize_by(name: row['category_name'])
