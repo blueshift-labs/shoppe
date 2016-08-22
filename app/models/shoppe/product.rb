@@ -185,6 +185,14 @@ module Shoppe
           end
           product.image_url = row["image_url"] if row["image_url"].present?
           product.stock_control = false # disabling stock control
+          product.author = row["author"] || ""
+          product.isbn = row["isbn"] || ""
+          product.language = row["language"] || ""
+          if row["language"] == "E"
+            product.language = "English"
+          end
+          product.pages = row["pages"].nil? ? 0 : row["pages"].to_i
+          product.subject = row["subject"] || ""
           
           product.save!
 
