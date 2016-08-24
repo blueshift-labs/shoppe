@@ -32,6 +32,13 @@ module Shoppe
       "#{first_name} #{last_name}"
     end
 
+    def reset_password!
+      self.password = SecureRandom.hex(8)
+      self.password_confirmation = password
+      save!
+      Shoppe::CustomerMailer.new_password(self).deliver
+    end
+
     def self.authenticate(email_address, password)
       customer = where(email: email_address).first
       return false if customer.nil?
