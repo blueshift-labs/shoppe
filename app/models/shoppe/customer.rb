@@ -4,6 +4,7 @@ module Shoppe
     PHONE_REGEX = /\A[+?\d\ \-x\(\)]{7,}\z/
 
     self.table_name = 'shoppe_customers'
+    has_secure_password
 
     has_many :addresses, dependent: :restrict_with_exception, class_name: 'Shoppe::Address'
 
@@ -29,6 +30,13 @@ module Shoppe
     # @return [String]
     def full_name
       "#{first_name} #{last_name}"
+    end
+
+    def self.authenticate(email_address, password)
+      customer = where(email: email_address).first
+      return false if customer.nil?
+      return false unless customer.authenticate(password)
+      customer
     end
 
     def self.ransackable_attributes(_auth_object = nil)
