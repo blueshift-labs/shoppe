@@ -11,8 +11,8 @@ module Shoppe
     has_many :orders, dependent: :restrict_with_exception, class_name: 'Shoppe::Order'
 
     # Validations
-    validates :email, presence: true, uniqueness: true, format: { with: EMAIL_REGEX }
-    validates :phone, presence: true, format: { with: PHONE_REGEX }
+    # validates :email, presence: true, uniqueness: true, format: { with: EMAIL_REGEX }
+    # validates :phone, presence: true, format: { with: PHONE_REGEX }
 
     # All customers ordered by their ID desending
     scope :ordered, -> { order(id: :desc) }
@@ -36,7 +36,7 @@ module Shoppe
       self.password = SecureRandom.hex(8)
       self.password_confirmation = password
       save!
-      Shoppe::CustomerMailer.new_password(self).deliver
+      Shoppe::CustomerMailer.new_password(self).deliver_now
     end
 
     def self.authenticate(email_address, password)
