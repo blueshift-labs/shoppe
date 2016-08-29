@@ -4,6 +4,7 @@ module Shoppe
     before_filter { params[:id] && @product = Shoppe::Product.root.find(params[:id]) }
 
     def index
+      byebug
       @products_paged = Shoppe::Product.root
                                        .includes(:translations, :stock_level_adjustments, :product_categories, :variants)
                                        .order(:name)
@@ -63,6 +64,7 @@ module Shoppe
     end
 
     def import
+      byebug
       if request.post?
         if params[:import].nil?
           redirect_to import_products_path, flash: { alert: t('shoppe.imports.errors.no_file') }
