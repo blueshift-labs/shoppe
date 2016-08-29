@@ -11,7 +11,10 @@ gemspec
 # your gem to rubygems.org.
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
+gem 'byebug'
+gem 'pry'
+gem 'pry-nav'
 
 gem 'pg' if ENV['DB'] == 'postgresql'
 
