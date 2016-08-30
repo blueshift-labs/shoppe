@@ -61,6 +61,10 @@ module Shoppe
       attachments.for('image')
     end
 
+    def image_url
+      products.where.not(:image_url => nil).order("RANDOM()").first.image_url
+    end
+
     private
 
     def set_permalink

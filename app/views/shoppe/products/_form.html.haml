@@ -16,7 +16,7 @@
         %dt= f.label :sku, t('shoppe.products.sku')
         %dd= f.text_field :sku, :class => 'text', :required => true
     .splitContainer
-      %dl.third
+      %dl.third{style: 'float: left'}
         %dt= f.label :author, t('shoppe.products.author')
         %dd= f.text_field :author, :class => 'text focus', :required => true
       %dl.third
@@ -25,13 +25,17 @@
       %dl.third
         %dt= f.label :language, t('shoppe.products.language')
         %dd= f.text_field :language, :class => 'text', :required => true
+    .splitContainer
+      %dl.third
+        %dt= f.label :image_url, t('shoppe.products.image_url')
+        %dd= f.text_field :image_url, :class => 'text focus'
         
     %dl
       %dt= f.label :description, t('shoppe.products.description')
       %dd= f.text_area :description, :class => 'text', :required => true
     %dl
       %dt= f.label :short_description, t('shoppe.products.short_description')
-      %dd= f.text_area :short_description, :class => 'text', :required => true
+      %dd= f.text_area :short_description, :class => 'text'
     %dl
       %dt= f.label :in_the_box, t('shoppe.products.in_the_box')
       %dd= f.text_area :in_the_box, :class => 'text'
