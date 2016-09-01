@@ -18,7 +18,7 @@ module Shoppe
     validates :ordered_item, presence: true
 
     validate do
-      errors.add :quantity, :too_high_quantity unless in_stock?
+      errors.add :quantity, :too_high_quantity unless in_stock? || self.order.status == 'add_to_wishlist'
     end
 
     # Before saving an order item which belongs to a received order, cache the pricing again if appropriate.
@@ -73,7 +73,7 @@ module Shoppe
     def increase!(amount = 1)
       transaction do
         self.quantity += amount
-        unless in_stock?
+        unless in_stock? || self.order.status == 'add_to_wishlist'
           fail Shoppe::Errors::NotEnoughStock, ordered_item: ordered_item, requested_stock: self.quantity
         end
         save!
